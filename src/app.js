@@ -6,7 +6,7 @@ const app = express();
 
 // CORS configuration to allow requests from weularity-frontend.vercel.app
 const corsOptions = {
-  origin: "https://weularity-frontend.vercel.app", // Allow the frontend domain (no path)
+  origin: "*", // Allow the frontend domain (no path)
   methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
   credentials: true, // Allow cookies to be sent with requests
   allowedHeaders: ["Content-Type", "Authorization"],
