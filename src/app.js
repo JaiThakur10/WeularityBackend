@@ -5,21 +5,10 @@ import cookieParser from "cookie-parser";
 const app = express();
 
 // CORS configuration to allow requests from weularity-frontend.vercel.app
-const allowedOrigins = [
-  "https://weularity-frontend.vercel.app/getstarted",
-  // Add local development origin if needed
-];
-
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS try otherthing"));
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
+  origin: "https://weularity-frontend.vercel.app/getstarted", // Allow your specific frontend domain
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  credentials: true, // Allow cookies to be sent with requests
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
