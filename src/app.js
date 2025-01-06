@@ -7,7 +7,7 @@ const app = express();
 // CORS configuration to allow requests from weularity-frontend.vercel.app
 const allowedOrigins = [
   "https://weularity-frontend.vercel.app/getstarted",
-  "http://localhost:3000", // Add local development origin if needed
+  // Add local development origin if needed
 ];
 
 const corsOptions = {
@@ -15,7 +15,7 @@ const corsOptions = {
     if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(new Error("Not allowed by CORS try otherthing"));
     }
   },
   methods: ["GET", "POST", "PUT", "DELETE"],
