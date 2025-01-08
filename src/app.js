@@ -14,7 +14,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.options("*", cors(corsOptions)); // Enable preflight for all routes
+// app.options("*", cors(corsOptions)); // Enable preflight for all routes
 
 app.use((req, res, next) => {
   console.log("Incoming Request Origin:", req.headers.origin);

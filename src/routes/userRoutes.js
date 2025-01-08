@@ -5,6 +5,7 @@ const router = express.Router();
 
 // POST route to save user data
 router.post("/", async (req, res) => {
+  console.log("started!");
   try {
     const {
       name,
@@ -16,6 +17,9 @@ router.post("/", async (req, res) => {
       websiteNeeds,
       budget,
     } = req.body;
+
+    console.log("Working in body!");
+    console.log(req.body);
 
     // Input validation (basic check)
     // if (!name || !email || !phoneNumber) {
@@ -36,10 +40,11 @@ router.post("/", async (req, res) => {
       websiteNeeds,
       budget,
     });
+    console.log("usrer created");
 
     // Save to database
     const savedUser = await user.save();
-
+    console.log("user saved!");
     // Success response
     res.status(201).json({
       success: true,
