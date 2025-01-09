@@ -43,6 +43,7 @@ router.post("/", async (req, res) => {
     console.log("usrer created");
 
     // Save to database
+    console.log("user saving!!!");
     const savedUser = await user.save();
     console.log("user saved!");
     // Success response
