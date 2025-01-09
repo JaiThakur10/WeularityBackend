@@ -21,7 +21,7 @@ const userFormSchema = z.object({
   services: z.array(ServiceType).default([]),
   newOrRebuild: NewOrRebuildType,
   websiteNeeds: WebsiteNeedsType,
-  budget: z.array(BudgetType),
+  budget: BudgetType, //if array then z.array(BudgetType);
 });
 
 type UserFormSchemaType = z.infer<typeof userFormSchema>;
