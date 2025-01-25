@@ -1,4 +1,6 @@
 import { z } from "zod";
+import validator from "validator";
+
 import {
   BudgetType,
   NewOrRebuildType,
@@ -12,6 +14,14 @@ const userFormSchema = z.object({
     .trim()
     .min(2, "Name must be at least 2 characters long.")
     .max(100, "Name must not exceed 100 characters."),
+  phoneNumber: z.string().refine(
+    (value) => {
+      return validator.isMobilePhone(value, "en-IN", { strictMode: false }); // only validatos indian mobile Numbers
+    },
+    {
+      message: "Please enter a valid phone number.",
+    },
+  ),
   email: z.string().trim().email("Please enter a valid email address."),
   company: z
     .string()
@@ -21,7 +31,8 @@ const userFormSchema = z.object({
   services: z.array(ServiceType).default([]),
   newOrRebuild: NewOrRebuildType,
   websiteNeeds: WebsiteNeedsType,
-  budget: BudgetType, //if array then z.array(BudgetType);
+  budget: BudgetType,
+  timeFrame: z.string(),
 });
 
 type UserFormSchemaType = z.infer<typeof userFormSchema>;

@@ -5,7 +5,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY package.json package-lock.json ./
+COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
 RUN npm install
@@ -34,8 +34,8 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./
 
 # Expose the application port
-EXPOSE 8080
+EXPOSE 8081
 
 # Start the application
-CMD ["node", "index.js"]
+CMD ["node", "server.js"]
 

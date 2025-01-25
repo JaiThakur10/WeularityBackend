@@ -14,21 +14,22 @@ const email = async (data: UserFormSchemaType) => {
     );
     const recipients = [
       new Recipient(
-        process.env.RECIPIENTEMAIL || "kesarrudr@gmail.com",
-        process.env.RECIPIENTNAME || "Rudr Kesar",
+        process.env.RECIPIENTEMAIL || "dev10jai@gmail.com",
+        process.env.RECIPIENTNAME || "Jai Thakur",
       ),
     ];
 
-    const textContent = `
-      User Form Submission:
-      Name: ${data.name}
-      Email: ${data.email}
-      Company: ${data.company || "N/A"}
-      Services: ${data.services.join(", ")}
-      New or Rebuild: ${data.newOrRebuild}
-      Website Needs: ${data.websiteNeeds}
-      Budget: ${data.budget.join(", ")}
-    `;
+    const textContent = `User Form Submission:
+----------------------
+Name: ${data.name}
+Email: ${data.email}
+Phone Number: ${data.phoneNumber}
+Company: ${data.company ? data.company : "N/A"}
+Services: ${data.services.length > 0 ? data.services.join(", ") : "No services selected"}
+New or Rebuild: ${data.newOrRebuild}
+Website Needs: ${data.websiteNeeds}
+Budget: ${data.budget}
+Expected Delivery Time: ${data.timeFrame}`;
 
     const emailParams = new EmailParams()
       .setFrom(sentFrom)

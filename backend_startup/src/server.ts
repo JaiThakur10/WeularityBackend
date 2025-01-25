@@ -1,6 +1,6 @@
 import createServer from ".";
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 const server = createServer();
 
