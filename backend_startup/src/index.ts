@@ -1,19 +1,10 @@
 import express from "express";
 import cors from "cors";
 import { V1Route } from "./version/v1";
-import { errorHandler } from "./utilis";
-import rateLimit from "express-rate-limit";
+import { appRateLimitter, errorHandler } from "./utilis";
 
 const createServer = () => {
   const app = express();
-
-  const appRateLimitter = rateLimit({
-    windowMs: 2 * 60 * 1000,
-    max: 5,
-    message: "Sumbited to may form wait for some time",
-    standardHeaders: true,
-    legacyHeaders: false,
-  });
 
   app.use(express.json());
   app.use(
